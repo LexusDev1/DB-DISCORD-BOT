@@ -8,7 +8,8 @@ class OpMusic(commands.Cog):
 
     @nextcord.slash_command(name="Ping")
     async def Play(self, interaction: nextcord.Interaction, * search: wavelink.YoutubeTrack):
-        interaction.response.send_message("Pong", ephemeral=True)
+        if not interaction.voice_client:
+            vc: wavelink.Player = await interaction.voice.channel.connect(cls: wavelink.Player)
 
 def setup(client):
     client.add_cog(Ping(client))
