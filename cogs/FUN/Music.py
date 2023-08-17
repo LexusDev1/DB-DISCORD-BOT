@@ -9,7 +9,7 @@ class OpMusic(commands.Cog):
     @nextcord.slash_command(name="Ping")
     async def Play(self, interaction: nextcord.Interaction, * search: wavelink.YoutubeTrack):
         if not interaction.voice_client:
-            vc: wavelink.Player = await interaction.voice.channel.connect(cls: wavelink.Player)
+            vc: wavelink.Player = await interaction.voice.channel.connect(cls=wavelink.Player)
         elif not interaction.author.voice_client:
             errEm = nextcord.Embed(description="❌: Join vc first")
             return interaction.response.send_message(embed=errEm, ephemeral=True)
